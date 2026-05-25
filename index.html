@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vigneshwaran Theerthagiri — Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      :root {
+        --red: #e63946;
+        --bg: #07070f;
+        --sur: #0e0e1c;
+        --card: #12121f;
+        --bdr: #1c1c30;
+        --txt: #eeeef5;
+        --sub: #8888aa;
+        --mut: #444460;
+        --grn: #3ddc84;
+        --font-head: "Syne", sans-serif;
+        --font-body: "DM Sans", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--txt);
+        overflow-x: hidden;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(7, 7, 15, 0.9);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--bdr);
+        padding: 0 clamp(16px, 4vw, 60px);
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: var(--font-head);
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--txt);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .logo-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--red);
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .nav-links a {
+        font-size: 13px;
+        color: var(--sub);
+        text-decoration: none;
+        padding: 7px 14px;
+        border-radius: 8px;
+        transition: 0.18s;
+      }
+      .nav-links a:hover {
+        color: var(--txt);
+        background: var(--sur);
+      }
+      .nav-cta {
+        background: var(--red) !important;
+        color: #fff !important;
+        font-weight: 500;
+      }
+      .nav-cta:hover {
+        background: #c9313e !important;
+      }
+      .nav-menu {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--txt);
+        padding: 6px;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        padding: 60px clamp(16px, 6vw, 80px);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 60% at 70% 40%,
+          rgba(230, 57, 70, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(230, 57, 70, 0.08);
+        border: 1px solid rgba(230, 57, 70, 0.2);
+        color: var(--red);
+        font-size: 11px;
+        padding: 5px 14px;
+        border-radius: 20px;
+        margin-bottom: 24px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+      .tag-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--red);
+        animation: blink 1.8s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.2;
+        }
+      }
+      .hero h1 {
+        font-family: var(--font-head);
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -2px;
+        margin-bottom: 20px;
+      }
+      .hero h1 .accent {
+        color: var(--red);
+      }
+      .hero-sub {
+        font-size: clamp(14px, 1.5vw, 17px);
+        color: var(--sub);
+        line-height: 1.75;
+        margin-bottom: 32px;
+        max-width: 480px;
+        font-weight: 300;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn-p {
+        background: var(--red);
+        color: #fff;
+        padding: 13px 28px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: 0.18s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-p:hover {
+        background: #c9313e;
+        transform: translateY(-1px);
+      }
+      .btn-g {
+        background: transparent;
+        color: var(--sub);
+        padding: 13px 24px;
+        border-radius: 10px;
+        font-size: 14px;
+        text-decoration: none;
+        border: 1px solid var(--bdr);
+        transition: 0.18s;
+      }
+      .btn-g:hover {
+        border-color: var(--mut);
+        color: var(--txt);
+      }
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+        margin-top: 40px;
+        padding-top: 36px;
+        border-top: 1px solid var(--bdr);
+      }
+      .hstat-n {
+        font-family: var(--font-head);
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--txt);
+      }
+      .hstat-n span {
+        color: var(--red);
+      }
+      .hstat-l {
+        font-size: 11px;
+        color: var(--mut);
+        margin-top: 2px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+
+      /* HERO RIGHT — Avatar card */
+      .hero-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .avatar-wrap {
+        width: min(340px, 90%);
+        background: var(--sur);
+        border: 1px solid var(--bdr);
+        border-radius: 24px;
+        padding: 32px 28px;
+        text-align: center;
+        position: relative;
+      }
+      .avatar-wrap::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--red), #ff9f43);
+        border-radius: 24px 24px 0 0;
+      }
+      .avatar-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(230, 57, 70, 0.12);
+        border: 2px solid rgba(230, 57, 70, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-head);
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--red);
+        margin: 0 auto 18px;
+      }
+      .avatar-name {
+        font-family: var(--font-head);
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .avatar-role {
+        font-size: 12px;
+        color: var(--sub);
+        margin-bottom: 20px;
+      }
+      .skill-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .chip {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: var(--card);
+        color: var(--sub);
+        border: 1px solid var(--bdr);
+      }
+      .avail-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: rgba(61, 220, 132, 0.08);
+        border: 1px solid rgba(61, 220, 132, 0.2);
+        border-radius: 8px;
+        padding: 9px 14px;
+        font-size: 12px;
+        color: var(--grn);
+      }
+      .avail-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--grn);
+        animation: blink 1.8s infinite;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 80px clamp(16px, 6vw, 80px);
+      }
+      .section-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-divider {
+        height: 1px;
+        background: var(--bdr);
+        margin: 0 clamp(16px, 6vw, 80px);
+      }
+      .kicker {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--red);
+        font-family: var(--font-head);
+        margin-bottom: 8px;
+      }
+      .sec-h {
+        font-family: var(--font-head);
+        font-size: clamp(24px, 3vw, 38px);
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 8px;
+      }
+      .sec-sub {
+        font-size: 14px;
+        color: var(--sub);
+        margin-bottom: 40px;
+      }
+
+      /* PRODUCTS */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .prod-card {
+        background: var(--sur);
+        border: 1px solid var(--bdr);
+        border-radius: 16px;
+        padding: 22px;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+      .prod-card:hover {
+        border-color: rgba(230, 57, 70, 0.35);
+        transform: translateY(-3px);
+      }
+      .prod-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        margin-bottom: 14px;
+      }
+      .prod-name {
+        font-family: var(--font-head);
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .prod-price {
+        font-size: 13px;
+        color: var(--red);
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .prod-divider {
+        height: 1px;
+        background: var(--bdr);
+        margin: 12px 0;
+      }
+      .prod-verticals {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .pv {
+        font-size: 11px;
+        color: var(--sub);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .pv::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--mut);
+        flex-shrink: 0;
+      }
+
+      /* PROJECTS */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .proj-card {
+        background: var(--sur);
+        border: 1px solid var(--bdr);
+        border-radius: 16px;
+        padding: 24px;
+        transition: 0.18s;
+      }
+      .proj-card:hover {
+        border-color: var(--mut);
+      }
+      .proj-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .proj-name {
+        font-family: var(--font-head);
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .badge {
+        font-size: 10px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+      .badge-live {
+        background: rgba(61, 220, 132, 0.12);
+        color: var(--grn);
+        border: 1px solid rgba(61, 220, 132, 0.2);
+      }
+      .badge-build {
+        background: rgba(245, 166, 35, 0.12);
+        color: #f5a623;
+        border: 1px solid rgba(245, 166, 35, 0.2);
+      }
+      .proj-desc {
+        font-size: 13px;
+        color: var(--sub);
+        line-height: 1.65;
+        margin-bottom: 14px;
+      }
+      .stack-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .sc {
+        font-size: 10px;
+        padding: 3px 9px;
+        border-radius: 6px;
+        background: var(--card);
+        color: var(--mut);
+        border: 1px solid var(--bdr);
+      }
+
+      /* SKILLS */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .skill-card {
+        background: var(--sur);
+        border: 1px solid var(--bdr);
+        border-radius: 16px;
+        padding: 22px;
+      }
+      .skill-icon-wrap {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(230, 57, 70, 0.08);
+        border: 1px solid rgba(230, 57, 70, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        margin-bottom: 14px;
+      }
+      .skill-title {
+        font-family: var(--font-head);
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .skill-items {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .si {
+        font-size: 12px;
+        color: var(--sub);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .si::before {
+        content: "✓";
+        font-size: 10px;
+        color: var(--red);
+        flex-shrink: 0;
+      }
+
+      /* CLIENTS */
+      .clients-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .city-card {
+        background: var(--sur);
+        border: 1px solid var(--bdr);
+        border-radius: 14px;
+        padding: 18px;
+        text-align: center;
+      }
+      .city-emoji {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+      .city-name {
+        font-family: var(--font-head);
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .city-note {
+        font-size: 11px;
+        color: var(--sub);
+      }
+
+      /* CTA / CONTACT */
+      .cta-band {
+        background: var(--sur);
+        border: 1px solid rgba(230, 57, 70, 0.2);
+        border-radius: 24px;
+        padding: clamp(36px, 5vw, 64px);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .cta-band::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(230, 57, 70, 0.1),
+          transparent 70%
+        );
+      }
+      .cta-band h2 {
+        font-family: var(--font-head);
+        font-size: clamp(24px, 3vw, 42px);
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+        position: relative;
+      }
+      .cta-band p {
+        font-size: 15px;
+        color: var(--sub);
+        margin-bottom: 28px;
+        position: relative;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .cta-btns {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        margin-bottom: 36px;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .citem {
+        background: var(--card);
+        border: 1px solid var(--bdr);
+        border-radius: 12px;
+        padding: 14px;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.15s;
+        display: block;
+      }
+      .citem:hover {
+        border-color: rgba(230, 57, 70, 0.3);
+        transform: translateY(-2px);
+      }
+      .citem-icon {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+      .citem-label {
+        font-size: 11px;
+        color: var(--sub);
+      }
+      .citem-val {
+        font-size: 12px;
+        color: var(--txt);
+        margin-top: 2px;
+        font-weight: 500;
+      }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--bdr);
+        padding: 24px clamp(16px, 6vw, 80px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .foot-logo {
+        font-family: var(--font-head);
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--sub);
+      }
+      .foot-right {
+        font-size: 12px;
+        color: var(--mut);
+      }
+
+      /* MOBILE NAV DRAWER */
+      .mob-nav {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+      }
+      .mob-nav-inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 240px;
+        height: 100%;
+        background: var(--sur);
+        border-left: 1px solid var(--bdr);
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .mob-nav a {
+        color: var(--sub);
+        text-decoration: none;
+        font-size: 15px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        display: block;
+        transition: 0.15s;
+      }
+      .mob-nav a:hover {
+        background: var(--card);
+        color: var(--txt);
+      }
+      .mob-close {
+        background: none;
+        border: none;
+        color: var(--sub);
+        font-size: 22px;
+        cursor: pointer;
+        margin-bottom: 16px;
+        padding: 4px;
+      }
+
+      /* RESPONSIVE BREAKPOINTS */
+      @media (max-width: 1024px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .clients-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .contact-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .hero-right {
+          display: none;
+        }
+        .hero-stats {
+          gap: 20px;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .nav-links {
+          display: none;
+        }
+        .nav-menu {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      @media (max-width: 540px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .clients-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .contact-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .hero-stats {
+          flex-wrap: wrap;
+          gap: 18px;
+        }
+      }
+
+      /* SCROLL ANIMATIONS */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a class="nav-logo" href="#"><span class="logo-dot"></span>BheemSoft</a>
+      <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Hire Me ↗</a>
+      </div>
+      <button class="nav-menu" id="menuBtn" aria-label="Open menu">
+        &#9776;
+      </button>
+    </nav>
+
+    <div class="mob-nav" id="mobNav" style="display: none">
+      <div class="mob-nav-inner">
+        <button class="mob-close" id="mobClose">✕</button>
+        <a href="#products" onclick="closeMob()">Products</a>
+        <a href="#projects" onclick="closeMob()">Projects</a>
+        <a href="#skills" onclick="closeMob()">Skills</a>
+        <a href="#contact" onclick="closeMob()">Contact</a>
+        <a
+          href="#contact"
+          onclick="closeMob()"
+          class="nav-cta"
+          style="
+            margin-top: 12px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 13px 14px;
+          "
+          >Hire Me ↗</a
+        >
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-left fade-in">
+          <div class="hero-tag">
+            <span class="tag-dot"></span>Available for Projects · Salem, TN 🇮🇳
+          </div>
+          <h1>
+            Full Stack<br /><span class="accent">Software</span><br />Developer.
+          </h1>
+          <p class="hero-sub">
+            Building billing systems, CRM platforms, appointment tools, and ERP
+            solutions for businesses across Tamil Nadu. PHP · SQL Server ·
+            Flutter · React.
+          </p>
+          <div class="hero-btns">
+            <a href="#contact" class="btn-p">Hire Me ↗</a>
+            <a href="#projects" class="btn-g">View Projects</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="hstat-n">5<span>+</span></div>
+              <div class="hstat-l">Years exp</div>
+            </div>
+            <div>
+              <div class="hstat-n">20<span>+</span></div>
+              <div class="hstat-l">Projects</div>
+            </div>
+            <div>
+              <div class="hstat-n">4</div>
+              <div class="hstat-l">Cities</div>
+            </div>
+            <div>
+              <div class="hstat-n">20<span>+</span></div>
+              <div class="hstat-l">Verticals</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right fade-in">
+          <div class="avatar-wrap">
+            <div class="avatar-circle">VT</div>
+            <div class="avatar-name">Vigneshwaran Theerthagiri</div>
+            <div class="avatar-role">Full Stack Software Developer</div>
+            <div class="skill-chips">
+              <span class="chip">PHP 8</span><span class="chip">SQL Server</span
+              ><span class="chip">JavaScript</span>
+              <span class="chip">Flutter</span><span class="chip">React</span
+              ><span class="chip">MySQL</span> <span class="chip">Node.js</span
+              ><span class="chip">Tailwind</span>
+            </div>
+            <div class="avail-badge">
+              <span class="avail-dot"></span>Open for freelance projects
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <div class="section-inner">
+        <div class="kicker fade-in">Software Products</div>
+        <div class="sec-h fade-in">4 Categories · 20 Verticals</div>
+        <div class="sec-sub fade-in">
+          Industry-specific software built for Tamil Nadu businesses · Starting
+          ₹4,999/year
+        </div>
+        <div class="products-grid">
+          <div class="prod-card fade-in">
+            <div class="prod-icon" style="background: rgba(230, 57, 70, 0.1)">
+              🧾
+            </div>
+            <div class="prod-name">Billing Software</div>
+            <div class="prod-price">From ₹4,999 / year</div>
+            <div class="prod-divider"></div>
+            <div class="prod-verticals">
+              <div class="pv">Retail Shop — GST Invoice</div>
+              <div class="pv">Supermarket — Barcode Billing</div>
+              <div class="pv">Medical Shop — Expiry Alert</div>
+              <div class="pv">Restaurant — KOT Billing</div>
+              <div class="pv">Wholesale — Discount Control</div>
+            </div>
+          </div>
+          <div class="prod-card fade-in">
+            <div class="prod-icon" style="background: rgba(91, 156, 246, 0.1)">
+              📅
+            </div>
+            <div class="prod-name">Appointment Booking</div>
+            <div class="prod-price">From ₹4,999 / year</div>
+            <div class="prod-divider"></div>
+            <div class="prod-verticals">
+              <div class="pv">Clinic — Patient Queue</div>
+              <div class="pv">Salon — Customer History</div>
+              <div class="pv">Spa — Package Slots</div>
+              <div class="pv">Gym — Class Schedule</div>
+              <div class="pv">Consultants — Time Slots</div>
+            </div>
+          </div>
+          <div class="prod-card fade-in">
+            <div class="prod-icon" style="background: rgba(61, 220, 132, 0.1)">
+              📞
+            </div>
+            <div class="prod-name">CRM Software</div>
+            <div class="prod-price">From ₹5,999 / year</div>
+            <div class="prod-divider"></div>
+            <div class="prod-verticals">
+              <div class="pv">Loan Agents — Lead Tracking</div>
+              <div class="pv">DSA — Pipeline & Payout</div>
+              <div class="pv">Real Estate — Site Visits</div>
+              <div class="pv">Insurance — Renewals</div>
+              <div class="pv">Sales Team — Activity Track</div>
+            </div>
+          </div>
+          <div class="prod-card fade-in">
+            <div class="prod-icon" style="background: rgba(245, 166, 35, 0.1)">
+              🏭
+            </div>
+            <div class="prod-name">ERP Software</div>
+            <div class="prod-price">From ₹12,999 / year</div>
+            <div class="prod-divider"></div>
+            <div class="prod-verticals">
+              <div class="pv">Manufacturing — Production</div>
+              <div class="pv">Small Business — Full Control</div>
+              <div class="pv">Traders — Billing + Accounts</div>
+              <div class="pv">Factory — Raw to Finished</div>
+              <div class="pv">Multi-branch — Centralized</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-inner">
+        <div class="kicker fade-in">Portfolio</div>
+        <div class="sec-h fade-in">Live Projects</div>
+        <div class="sec-sub fade-in">
+          Real systems built and deployed for real businesses
+        </div>
+        <div class="projects-grid">
+          <div class="proj-card fade-in">
+            <div class="proj-head">
+              <div class="proj-name">KTM Jewellery — Daivel CRM</div>
+              <span class="badge badge-live">Live</span>
+            </div>
+            <div class="proj-desc">
+              Multi-branch CRM with weekly sales target tracking, branch-wise
+              employee ranking, WhatsApp PDF delivery via Wacto API, AI insights
+              via Groq LLM, and Chart.js dashboards.
+            </div>
+            <div class="stack-row">
+              <span class="sc">PHP</span><span class="sc">SQL Server</span
+              ><span class="sc">Chart.js</span><span class="sc">Wacto API</span
+              ><span class="sc">Groq AI</span><span class="sc">mPDF</span>
+            </div>
+          </div>
+          <div class="proj-card fade-in">
+            <div class="proj-head">
+              <div class="proj-name">Daivelho — Digital Gold App</div>
+              <span class="badge badge-live">Live</span>
+            </div>
+            <div class="proj-desc">
+              Flutter mobile app for digital gold saving scheme — 11 screens,
+              Clean Architecture, Riverpod state management, GoRouter, dark
+              luxury UI, Razorpay integration.
+            </div>
+            <div class="stack-row">
+              <span class="sc">Flutter</span><span class="sc">Dart</span
+              ><span class="sc">PHP API</span><span class="sc">SQL Server</span
+              ><span class="sc">Razorpay</span>
+            </div>
+          </div>
+          <div class="proj-card fade-in">
+            <div class="proj-head">
+              <div class="proj-name">ShopMaster POS</div>
+              <span class="badge badge-live">Live</span>
+            </div>
+            <div class="proj-desc">
+              Full departmental store POS — 8 phases including billing,
+              purchase, inventory, payroll, accounts, split payment, PWA
+              support, and variable quantity features.
+            </div>
+            <div class="stack-row">
+              <span class="sc">PHP 8</span><span class="sc">MySQL</span
+              ><span class="sc">Tailwind</span><span class="sc">JavaScript</span
+              ><span class="sc">PWA</span>
+            </div>
+          </div>
+          <div class="proj-card fade-in">
+            <div class="proj-head">
+              <div class="proj-name">Magizh Chit Fund System</div>
+              <span class="badge badge-live">Live</span>
+            </div>
+            <div class="proj-desc">
+              React + Vite frontend, Node.js/Express backend with full API
+              integration, Payment Collection screen, mobile-responsive
+              overhaul, Railway + Render deployment.
+            </div>
+            <div class="stack-row">
+              <span class="sc">React</span><span class="sc">Node.js</span
+              ><span class="sc">Express</span><span class="sc">MySQL</span
+              ><span class="sc">Railway</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-inner">
+        <div class="kicker fade-in">Expertise</div>
+        <div class="sec-h fade-in">Tech Stack</div>
+        <div class="sec-sub fade-in">
+          Production-grade, battle-tested tools for real business systems
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card fade-in">
+            <div class="skill-icon-wrap">💻</div>
+            <div class="skill-title">Frontend</div>
+            <div class="skill-items">
+              <div class="si">PHP + Tailwind CSS</div>
+              <div class="si">React + Vite</div>
+              <div class="si">JavaScript ES6+</div>
+              <div class="si">Chart.js · SweetAlert2</div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon-wrap">⚙️</div>
+            <div class="skill-title">Backend</div>
+            <div class="skill-items">
+              <div class="si">PHP 8 REST API</div>
+              <div class="si">Node.js / Express</div>
+              <div class="si">Multi-tenant architecture</div>
+              <div class="si">JWT · Token auth</div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon-wrap">🗄️</div>
+            <div class="skill-title">Database</div>
+            <div class="skill-items">
+              <div class="si">SQL Server + Stored Procs</div>
+              <div class="si">MySQL / MariaDB</div>
+              <div class="si">Query optimization</div>
+              <div class="si">Multi-branch data isolation</div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon-wrap">📱</div>
+            <div class="skill-title">Mobile</div>
+            <div class="skill-items">
+              <div class="si">Flutter / Dart</div>
+              <div class="si">Riverpod · GoRouter</div>
+              <div class="si">Clean Architecture</div>
+              <div class="si">Razorpay SDK</div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon-wrap">🔗</div>
+            <div class="skill-title">Integrations</div>
+            <div class="skill-items">
+              <div class="si">Wacto WhatsApp API</div>
+              <div class="si">Groq AI / LLM</div>
+              <div class="si">mPDF · SheetJS export</div>
+              <div class="si">Razorpay payments</div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon-wrap">🚀</div>
+            <div class="skill-title">DevOps & Tools</div>
+            <div class="skill-items">
+              <div class="si">Git / GitHub</div>
+              <div class="si">Railway · Render</div>
+              <div class="si">Apache · IIS</div>
+              <div class="si">Postman · VS Code</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CITIES -->
+    <section>
+      <div class="section-inner">
+        <div class="kicker fade-in">Service Area</div>
+        <div class="sec-h fade-in">Serving 4 Cities</div>
+        <div class="sec-sub fade-in">
+          On-site demo available · Free setup for first client in each city
+        </div>
+        <div class="clients-grid">
+          <div class="city-card fade-in">
+            <div class="city-emoji">🏙️</div>
+            <div class="city-name">Salem</div>
+            <div class="city-note">Primary base · Immediate support</div>
+          </div>
+          <div class="city-card fade-in">
+            <div class="city-emoji">🌿</div>
+            <div class="city-name">Dharmapuri</div>
+            <div class="city-note">Active leads · Ready to deploy</div>
+          </div>
+          <div class="city-card fade-in">
+            <div class="city-emoji">🏡</div>
+            <div class="city-name">Harur</div>
+            <div class="city-note">First mover advantage</div>
+          </div>
+          <div class="city-card fade-in">
+            <div class="city-emoji">🌆</div>
+            <div class="city-name">Coimbatore</div>
+            <div class="city-note">Enterprise clients</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="cta-band fade-in">
+        <h2>Ready to build your software? 🚀</h2>
+        <p>
+          Free 15-minute demo for any product. First 3 months setup fee waived
+          for new clients.
+        </p>
+        <div class="cta-btns">
+          <a href="https://wa.me/918124791232" class="btn-p">WhatsApp Me ↗</a>
+          <a href="#projects" class="btn-g">See Projects</a>
+        </div>
+        <div class="contact-grid">
+          <a href="https://wa.me/918124791232" class="citem">
+            <div class="citem-icon">💬</div>
+            <div class="citem-label">WhatsApp</div>
+            <div class="citem-val">Message now</div>
+          </a>
+          <a href="mailto:Vigneshwaran@example.com" class="citem">
+            <div class="citem-icon">📧</div>
+            <div class="citem-label">Email</div>
+            <div class="citem-val">Drop a mail</div>
+          </a>
+          <a
+            href="https://github.com/MrBheem-Dev"
+            target="_blank"
+            class="citem"
+          >
+            <div class="citem-icon">🐙</div>
+            <div class="citem-label">GitHub</div>
+            <div class="citem-val">MrBheem-Dev</div>
+          </a>
+          <div class="citem">
+            <div class="citem-icon">📍</div>
+            <div class="citem-label">Location</div>
+            <div class="citem-val">Salem, TN</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-logo">BheemSoft · Vigneshwaran Theerthagiri</div>
+      <div class="foot-right">Salem, Tamil Nadu · Full Stack Developer</div>
+    </footer>
+
+    <script>
+      document.getElementById("menuBtn").onclick = () => {
+        document.getElementById("mobNav").style.display = "flex";
+      };
+      document.getElementById("mobClose").onclick = closeMob;
+      document.getElementById("mobNav").onclick = function (e) {
+        if (e.target === this) closeMob();
+      };
+      function closeMob() {
+        document.getElementById("mobNav").style.display = "none";
+      }
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-in").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
